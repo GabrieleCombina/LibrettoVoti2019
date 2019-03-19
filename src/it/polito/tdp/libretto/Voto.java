@@ -43,7 +43,9 @@ public class Voto {
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
-
+	
+	
+	//2 oggetti voto uguali se relativi allo stesso corso
 	@Override
 	public int hashCode() {
 		final int prime = 31;

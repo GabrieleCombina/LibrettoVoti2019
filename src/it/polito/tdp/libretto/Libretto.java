@@ -39,12 +39,12 @@ public class Libretto {
 	 * @return Esame cercato o null quando non viene trovato
 	 */
 	public Voto cercaEsame(String nomeEsame){
-		for(Voto v : this.voti) {
-			if(v.getCorso().equals(nomeEsame)) {
-				return v;
-			}
-		}
-		return null;
+		Voto voto = new Voto(0, nomeEsame, null);
+		int pos = this.voti.indexOf(voto);  //trova il primo elemento della lista con quel voto, restituisce -1 se non lo trovo
+		if(pos == -1)
+			return null;
+		else
+			return this.voti.get(pos);
 	}
 	
 	/**
@@ -53,12 +53,10 @@ public class Libretto {
 	 * @return {@code true}, se ha trovato un corso e punteggio uguale, {@code false} se non ha trovato il corso, oppure l'ha trovato con voto diverso
 	 */
 	public boolean esisteGiaVoto(Voto v) {
-		Voto trovato = this.cercaEsame(v.getCorso());
-		if(trovato == null)
+		int pos = this.voti.indexOf(v);
+		if(pos==-1)
 			return false;
-		if(trovato.getPunti()==v.getPunti()) 
-			return true;
-		else
-			return false;
+		else 
+			return (v.getPunti() == this.voti.get(pos).getPunti()); //darà false o true
 	}
 }

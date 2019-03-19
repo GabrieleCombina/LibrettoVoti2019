@@ -22,6 +22,13 @@ public class TestLibretto {
 		Voto a3 = libr.cercaEsame("Analisi 3");
 		System.out.println(a1);
 		System.out.println(a3);
+		
+		Voto giusto = new Voto(25, "Geometria", LocalDate.now());
+		Voto sbagliato = new Voto(28, "Geometria", LocalDate.now());
+		Voto mancante = new Voto(30, "Merendine", LocalDate.now());
+		System.out.format("IL voto %s è %s\n", giusto.toString(), libr.esisteGiaVoto(giusto));
+		System.out.format("IL voto %s è %s\n", sbagliato.toString(), libr.esisteGiaVoto(sbagliato));
+		System.out.format("IL voto %s è %s\n", mancante.toString(), libr.esisteGiaVoto(mancante));
 	}
 
 }
